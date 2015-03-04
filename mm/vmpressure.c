@@ -399,6 +399,8 @@ static void vmpressure_global(gfp_t gfp, unsigned long scanned,
 		vmpr->stall += scanned;
 
 	stall = vmpr->stall;
+	vmpr->scanned += scanned;
+	vmpr->reclaimed += reclaimed;
 	scanned = vmpr->scanned;
 	reclaimed = vmpr->reclaimed;
 	spin_unlock(&vmpr->sr_lock);
@@ -412,8 +414,10 @@ static void vmpressure_global(gfp_t gfp, unsigned long scanned,
 	vmpr->stall = 0;
 	spin_unlock(&vmpr->sr_lock);
 
-	pressure = vmpressure_calc_pressure(scanned, reclaimed);
 	pressure = vmpressure_account_stall(pressure, stall, scanned);
+	spin_unlock(&vmpr->sr_lock);
+
+	pressure = vmpressure_calc_pressure(scanned, reclaimed);
 	vmpressure_notify(pressure);
 }
 
