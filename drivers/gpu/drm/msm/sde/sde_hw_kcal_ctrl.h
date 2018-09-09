@@ -63,15 +63,12 @@ struct drm_msm_pa_hsic sde_hw_kcal_hsic_struct(void);
  * @plane: index of pcc color plane.
  */
 void sde_hw_kcal_pcc_adjust(u32 *data, int plane);
-<<<<<<< HEAD
 
 /**
  * kcal_force_update() - force reprocessing on config change.
  */
 void kcal_force_update(void);
 
-=======
->>>>>>> f22c58a2e7e1 (drm/msm/sde: Introduce KCAL color control)
 #else
 static inline struct sde_hw_kcal sde_hw_kcal_get(void)
 {
