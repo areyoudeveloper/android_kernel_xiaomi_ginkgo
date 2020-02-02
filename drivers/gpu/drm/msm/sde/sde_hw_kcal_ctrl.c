@@ -91,8 +91,11 @@ static ssize_t store_##node(struct device *dev,			\
 									\
 	kcal_lut_data.object = val;					\
 									\
+<<<<<<< HEAD
 	kcal_force_update();                                            \
 									\
+=======
+>>>>>>> f22c58a2e7e1 (drm/msm/sde: Introduce KCAL color control)
 	return count;							\
 }									\
 									\
@@ -127,8 +130,11 @@ static ssize_t store_kcal(struct device *dev,
 	pcc->green = max(kcal_g, kcal_lut_data.min_value);
 	pcc->blue  = max(kcal_b, kcal_lut_data.min_value);
 
+<<<<<<< HEAD
 	kcal_force_update();
 
+=======
+>>>>>>> f22c58a2e7e1 (drm/msm/sde: Introduce KCAL color control)
 	return count;
 }
 
