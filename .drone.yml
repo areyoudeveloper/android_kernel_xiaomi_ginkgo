@@ -1,0 +1,19 @@
+clone:
+  depth: 1
+kind: pipeline
+name: pipe
+
+platform:
+  os: linux
+  arch: amd64
+  
+steps:
+  - name: build
+    image: ubuntu:18.04
+    environment:
+      TOKEN:
+       from_secret: token_id
+    commands: 
+       - apt update && apt install git wget -y
+       - chmod +x tg.sh 
+       - ./tg.sh
