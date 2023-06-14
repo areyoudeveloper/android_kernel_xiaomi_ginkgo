@@ -1,4 +1,5 @@
-[![Build Status](https://cloud.drone.io/api/badges/areyoudeveloper/android_kernel_xiaomi_ginkgo/status.svg)]
+[![Build Status]
+(https://cloud.drone.io/api/badges/areyoudeveloper/android_kernel_xiaomi_ginkgo/status.svg)]
 (https://cloud.drone.io/areyoudeveloper/android_kernel_xiaomi_ginkgo)
 Linux kernel
 ============
