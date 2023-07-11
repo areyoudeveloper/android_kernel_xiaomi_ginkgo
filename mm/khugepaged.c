@@ -1325,7 +1325,6 @@ static void retract_page_tables(struct address_space *mapping, pgoff_t pgoff)
 								  end);
 			}
 			up_write(&mm->mmap_sem);
-		}
 	}
 	i_mmap_unlock_write(mapping);
 }
