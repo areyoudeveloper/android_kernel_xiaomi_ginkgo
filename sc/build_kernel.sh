@@ -10,7 +10,7 @@ BUILD_START=$(date +"%s")
 
 make O=out ARCH=arm64 final_defconfig
 
-[[ $2 != 'dtb' ]] && pcmake -j 20 || pcmake dtbs
+[[ $2 != 'dtb' ]] && pcmake -j 20 || pcmake dtbs && pcmake modules_install INSTALL_MOD_PATH=../
 
 DIFF=$(($(date +"%s") - $BUILD_START))
 echo -e "\nBuild succeeded in $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds."

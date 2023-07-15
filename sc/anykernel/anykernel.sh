@@ -1,24 +1,13 @@
 # AnyKernel3 Ramdisk Mod Script
 # osm0sis @ xda-developers
 properties() { '
-kernel.string="Quarzt Crystal 4.9"
+kernel.string="Quarzt Crystal 4.14"
 do.devicecheck=0
 do.modules=0
 do.systemless=1
 do.cleanup=1
 do.cleanuponabort=0
-device.name1=mi8937
-device.name2=land
-device.name3=landtoni
-device.name4=riva
-device.name5=rolex
-device.name6=rova
-device.name7=santoni
-device.name8=ugg
-device.name9=ugglite
-device.name10=ulysse
-device.name11=prada
-device.name12=tiare
+device.name1=ginkgo
 supported.versions=
 '; }
 

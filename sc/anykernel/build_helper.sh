@@ -5,7 +5,7 @@
 TC_DIR=${HOME}/android/TOOLS/proton-clang
 CFG_DIR=$(pwd)/arch/arm64/configs/
 CFG=$CFG_DIR/vendor/ginkgo-perf_defconfig
-
+export KBUILD_KVER=4.14.320-QuartzCrystal💎
 [ -d $TC_DIR ] \
 && echo -e "\nProton-Clang Present.\n" \
 || echo -e "\nProton-Clang Not Present. Downloading Around 500MB...\n" \
