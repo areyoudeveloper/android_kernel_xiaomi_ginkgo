@@ -1265,7 +1265,7 @@ enum wireless_mode {
 };
 
 /* from rtlwifi/wifi.h */
-+enum ratr_table_mode_new {
+enum ratr_table_mode_new {
 	RATEID_IDX_BGN_40M_2SS = 0,
 	RATEID_IDX_BGN_40M_1SS = 1,
 	RATEID_IDX_BGN_20M_2SS_BN = 2,
