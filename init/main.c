@@ -531,7 +531,6 @@ static void __init report_meminit(void)
 		pr_info("mem auto-init: clearing system memory may take some time...\n");
 }
 
-
 /*
  * Set up kernel memory allocators
  */
