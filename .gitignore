@@ -86,6 +86,7 @@ arch/*/include/generated
 
 # stgit generated dirs
 patches-*
+anykernel/
 
 # quilt's files
 patches
