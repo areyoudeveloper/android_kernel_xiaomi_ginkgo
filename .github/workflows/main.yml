@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v3        
       - name: build kernel
         run: |
-          git clone submodule update KernelSU
+          git submodule update KernelSU
           sudo apt update
           sudo apt install android-tools-mkbootimg bc bison build-essential ca-certificates cpio curl flex git kmod libssl-dev libtinfo5 python2 sudo unzip wget xz-utils -y --no-install-recommends
           sudo ln -sf python2.7 /usr/bin/python
