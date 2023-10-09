@@ -1,0 +1,29 @@
+name: CI
+
+on:
+
+  push:
+    branches: [ "origin/main" ]
+  pull_request:
+    branches: [ "origin/main" ]
+
+  workflow_dispatch:
+
+jobs:
+  BuildKernel:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3        
+      - name: build kernel
+        run: | 
+          sudo apt update
+          sudo apt install android-tools-mkbootimg bc bison build-essential ca-certificates cpio curl flex git kmod libssl-dev libtinfo5 python2 sudo unzip wget xz-utils -y --no-install-recommends
+          sudo ln -sf python2.7 /usr/bin/python
+          sudo ./tg.sh
+
+      - name: upload kernel
+        uses: actions/upload-artifact@master
+        with:
+            name: kernel
+            path: |
+              sc/*
