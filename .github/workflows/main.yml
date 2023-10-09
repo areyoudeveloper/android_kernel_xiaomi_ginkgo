@@ -26,5 +26,4 @@ jobs:
         uses: actions/upload-artifact@master
         with:
             name: kernel
-            path: |
-              sc/*
+            path: Quartz*.zip
