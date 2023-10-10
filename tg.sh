@@ -92,18 +92,18 @@ chmod +x build_kernel.sh
 export OWO=$(ls *.zip)
 
 if [ -f "$OWO" ]; then
-    curl -F document=@$OWO "https://api.telegram.org/bot$TOKEN/sendDocument" \
+    curl -F document=@$OWO "https://api.telegram.org/bot"$TOKEN"/sendDocument" \
         -F chat_id=$CID \
         -F "disable_web_page_preview=true" \
         -F "parse_mode=html"
 	
-    curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendMessage" \
+    curl -s -X POST "https://api.telegram.org/bot"$TOKEN"/sendMessage" \
         -d chat_id=$CID \
         -d "disable_web_page_preview=true" \
         -d "parse_mode=html" \
         -d text="Build Succeded  🥳 🥳 🥳 🥳 🥳 🥳"
 else 
-    curl -s -X POST "https://api.telegram.org/bot$TOKEN/sendMessage" \
+    curl -s -X POST "https://api.telegram.org/bot"$TOKEN"/sendMessage" \
         -d chat_id=$CID \
         -d "disable_web_page_preview=true" \
         -d "parse_mode=html" \
