@@ -11,7 +11,7 @@ rm -rf anykernel3
 mkdir -p $ak_dir 
 git clone --depth=1 https://github.com/osm0sis/AnyKernel3 $ak_dir
 rm $ak_dir/anykernel.sh
-cp anykernel/anykernel.sh $ak_dir
+cp -rf anykernel/any/* $ak_dir
 #cp -f anykernel/ak3-core.sh $ak_dir/tools/
 cp -rf $image $ak_dir/
 cp -rf $dtbimg $ak_dir/
