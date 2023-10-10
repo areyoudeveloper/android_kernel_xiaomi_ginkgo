@@ -8,7 +8,8 @@ on:
     branches: [ "origin/main" ]
 
   workflow_dispatch:
-
+env: 
+   TOKEN: ${{ secrets.TOKEN_ID }}
 jobs:
   BuildKernel:
     runs-on: ubuntu-20.04
