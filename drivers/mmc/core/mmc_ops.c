@@ -586,7 +586,7 @@ int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value,
 	mmc_retune_hold(host);
 
 	if (!timeout_ms) {
-		pr_warn("%s: unspecified timeout for CMD6 - use generic\n",
+		pr_debug("%s: unspecified timeout for CMD6 - use generic\n",
 			mmc_hostname(host));
 		timeout_ms = card->ext_csd.generic_cmd6_time;
 	}
