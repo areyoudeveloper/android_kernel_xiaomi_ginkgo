@@ -68,7 +68,7 @@ void sde_hw_kcal_pcc_adjust(u32 *data, int plane)
 }
 
 #define create_one_rw_node(node)					\
-static DEVICE_ATTR(node, 0644, show_##node, store_##node)
+static DEVICE_ATTR(node, 0664, show_##node, store_##node)
 
 #define define_one_kcal_node(node, object, min, max)			\
 static ssize_t show_##node(struct device *dev,				\
