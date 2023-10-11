@@ -107,4 +107,4 @@ endif
 
 # Module information used by KBuild framework
 obj-$(CONFIG_SND_SOC_MAX98937) += max98937_dlkm.o
-max98937_dlkm-y := $(MAX98937_OBJS
+max98937_dlkm-y := $(MAX98937_OBJS)
