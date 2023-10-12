@@ -84,7 +84,6 @@ void task_mem(struct seq_file *m, struct mm_struct *mm)
 		mm->stack_vm << (PAGE_SHIFT-10), text, lib,
 		ptes >> 10,
 		pmds >> 10,
-		mm_pgtables_bytes(mm) >> 10,
 		swap << (PAGE_SHIFT-10));
 	hugetlb_report_usage(m, mm);
 }
@@ -349,49 +348,6 @@ static void show_vma_header_prefix(struct seq_file *m,
 		   flags & VM_MAYSHARE ? 's' : 'p',
 		   pgoff,
 		   MAJOR(dev), MINOR(dev), ino);
-	size_t len;
-	char *out;
-
-	/* Set the overflow status to get more memory if there's no space */
-	if (seq_get_buf(m, &out) < 69) {
-		seq_commit(m, -1);
-		return -ENOMEM;
-	}
-
-	/* Supports printing up to 40 bits per virtual address */
-	BUILD_BUG_ON(CONFIG_ARM64_VA_BITS > 40);
-
-	len = print_vma_hex10(out, start, __builtin_clzl);
-
-	out[len++] = '-';
-
-	len += print_vma_hex10(out + len, end, __builtin_clzl);
-
-	out[len++] = ' ';
-	out[len++] = "-r"[!!(flags & VM_READ)];
-	out[len++] = "-w"[!!(flags & VM_WRITE)];
-	out[len++] = "-x"[!!(flags & VM_EXEC)];
-	out[len++] = "ps"[!!(flags & VM_MAYSHARE)];
-	out[len++] = ' ';
-
-	len += print_vma_hex10(out + len, pgoff, __builtin_clzll);
-
-	out[len++] = ' ';
-
-	len += print_vma_hex3(out + len, MAJOR(dev), __builtin_clz);
-
-	out[len++] = ':';
-
-	len += print_vma_hex5(out + len, MINOR(dev), __builtin_clz);
-
-	out[len++] = ' ';
-
-	len += num_to_str(&out[len], 20, ino);
-
-	out[len++] = ' ';
-
-	m->count += len;
-	return 0;
 }
 
 static void
@@ -2267,4 +2223,4 @@ const struct file_operations proc_tid_numa_maps_operations = {
 	.llseek		= seq_lseek,
 	.release	= proc_map_release,
 };
-#endif /* CONFIG_NUMA */
+#endif
