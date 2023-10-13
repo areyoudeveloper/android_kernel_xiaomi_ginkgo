@@ -135,7 +135,8 @@
 
 &pmi632_qg {
 	qcom,battery-data = <&mtp_batterydata>;
-	qcom,qg-iterm-ma = <100>;
+	qcom,qg-iterm-ma = <350>;
+	qcom,vbatt-cutoff-mv = <3500>;
 	qcom,hold-soc-while-full;
 	qcom,linearize-soc;
 	qcom,qg-use-s7-ocv;
@@ -145,20 +146,18 @@
 	qcom,battery-data = <&mtp_batterydata>;
 	qcom,suspend-input-on-debug-batt;
 	qcom,sw-jeita-enable;
-	qcom,step-charging-enable;
+	//qcom,step-charging-enable;
 	/* SMB1355 only */
-	qcom,sec-charger-config = <2>;
+	qcom,sec-charger-config = <0>;
 	dpdm-supply = <&qusb_phy0>;
 	qcom,charger-temp-max = <800>;
 	qcom,smb-temp-max = <800>;
-	qcom,auto-recharge-soc = <98>;
-	qcom,flash-disable-soc = <10>;
+	qcom,auto-recharge-soc = <99>;
+	qcom,flash-disable-soc = <0>;
 	qcom,hw-die-temp-mitigation;
-	qcom,hw-connector-mitigation;
-	qcom,connector-internal-pull-kohm = <100>;
 	qcom,float-option = <1>;
-	qcom,thermal-mitigation = <3000000 2500000
-			2000000 1500000 1000000 500000>;
+	qcom,thermal-mitigation = <3000000 2500000 2000000
+			2000000 1500000 900000 800000 500000 100000>;
 };
 
 &usb0 {
@@ -244,7 +243,7 @@
 	pinctrl-0 = <&smb_int_default>;
 	interrupt-parent = <&tlmm>;
 	interrupts = <130 IRQ_TYPE_LEVEL_LOW>;
-	status = "ok";
+	status = "disable";
 };
 
 &smb1355_charger {
@@ -253,7 +252,7 @@
 	qcom,parallel-mode = <1>;
 	qcom,disable-ctm;
 	qcom,hw-die-temp-mitigation;
-	status = "ok";
+	status = "disable";
 };
 
 &ufsphy_mem {
