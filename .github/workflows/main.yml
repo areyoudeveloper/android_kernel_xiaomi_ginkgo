@@ -26,5 +26,5 @@ jobs:
       - name: upload kernel
         uses: actions/upload-artifact@master
         with:
-            name: kernel
+            name: EXTRACKME
             path: Quartz*.zip
