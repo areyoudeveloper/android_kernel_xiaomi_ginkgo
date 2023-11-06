@@ -18,7 +18,7 @@ export KBUILD_KVER=4.14.328-QuartzCrystal💎
 | echo "Done."
 
 echo -e "\nChecking Clang Version...\n"
-PATH="$TC_DIR/bin:${PATH}" clang --version
+PATH="$TC_DIR/clang-r498229b/bin:${PATH}" clang --version
 echo -e "\n\nStarting Build...\n"
 
 cp $CFG $CFG_DIR/final_defconfig
