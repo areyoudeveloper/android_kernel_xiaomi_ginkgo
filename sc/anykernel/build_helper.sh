@@ -2,15 +2,19 @@
 
 [ -d out ] && rm -rf out && mkdir -p out || mkdir -p out
 
-TC_DIR=${HOME}/android/TOOLS/proton-clang
+TC_DIR=${HOME}/android/TOOLS/r416183b
+GCC_DIR=${HOME}/android/TOOLS/aarch64-linux-gnu
+GCC32_DIR=${HOME}/android/TOOLS/gcc32
 CFG_DIR=$(pwd)/arch/arm64/configs/
 CFG=$CFG_DIR/vendor/ginkgo-perf_defconfig
-export KBUILD_KVER=4.14.320-QuartzCrystal💎
-[ -d $TC_DIR ] \
-&& echo -e "\nProton-Clang Present.\n" \
-|| echo -e "\nProton-Clang Not Present. Downloading Around 500MB...\n" \
-| mkdir -p $TC_DIR \
-| git clone --depth=1 https://github.com/kdrag0n/proton-clang $TC_DIR \
+export KBUILD_KVER=4.14.328-QuartzCrystal💎
+[ -d $TC_DIR ] && [ -d $GCC_DIR ] && [ -d $GCC32_DIR ] \
+&& echo -e "\nG-Clang Present.\n" \
+|| echo -e "\nG-Clang Not Present. Downloading Around 800MB...\n" \
+| mkdir -p $TC_DIR && mkdir -p $GCC_DIR && mkdir -p $GCC32_DIR \
+| git clone https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b -b lineage-20.0 --depth 1 $TC_DIR \
+&& git clone https://github.com/najahiiii/aarch64-linux-gnu -b gcc8-201903-A --depth 1 $GCC_DIR \
+&& git clone https://github.com/najahiiii/aarch64-linux-gnu -b 4.9-32-mirror --depth 1 $GCC32_DIR \
 | echo "Done."
 
 echo -e "\nChecking Clang Version...\n"
@@ -20,7 +24,7 @@ echo -e "\n\nStarting Build...\n"
 cp $CFG $CFG_DIR/final_defconfig
 
 pcmake() {
-PATH="$TC_DIR/bin:${PATH}" \
+PATH="$TC_DIR/bin:$GCC_DIR/bin:$GCC32_DIR/bin:${PATH}" \
 make	\
 	O=out \
 	ARCH=arm64 \
@@ -38,7 +42,7 @@ make	\
 	HOSTAR="ccache llvm-ar" \
 	HOSTNM="ccache llvm-nm" \
 	CROSS_COMPILE="aarch64-linux-gnu-" \
-	CROSS_COMPILE_ARM32="arm-linux-gnueabi-" \
+	CROSS_COMPILE_ARM32="arm-linux-androideabi-" \
 	CONFIG_DEBUG_SECTION_MISMATCH=y \
 	CONFIG_NO_ERROR_ON_MISMATCH=y -j $(nproc)\
 	$1 $2 $3 || exit
