@@ -14,7 +14,7 @@ export KBUILD_KVER=4.14.328-QuartzCrystal💎
 | mkdir -p $TC_DIR && mkdir -p $GCC_DIR && mkdir -p $GCC32_DIR \
 | git clone https://gitlab.com/areyoudeveloper/google-clang17.0.4 -b 17 --depth 1 $TC_DIR \
 && git clone https://github.com/najahiiii/aarch64-linux-gnu -b gcc8-201903-A --depth 1 $GCC_DIR \
-&& git clone https://github.com/najahiiii/aarch64-linux-gnu -b 4.9-32-mirror --depth 1 $GCC32_DIR \
+&& git clone https://github.com/VedantParanjape/pru-gcc-arm32 -b master --depth 1 $GCC32_DIR \
 | echo "Done."
 
 echo -e "\nChecking Clang Version...\n"
@@ -42,7 +42,7 @@ make	\
 	HOSTAR="ccache llvm-ar" \
 	HOSTNM="ccache llvm-nm" \
 	CROSS_COMPILE="aarch64-linux-gnu-" \
-	CROSS_COMPILE_ARM32="arm-linux-androideabi-" \
+	CROSS_COMPILE_ARM32="pru-" \
 	CONFIG_DEBUG_SECTION_MISMATCH=y \
 	CONFIG_NO_ERROR_ON_MISMATCH=y -j $(nproc)\
 	$1 $2 $3 || exit
