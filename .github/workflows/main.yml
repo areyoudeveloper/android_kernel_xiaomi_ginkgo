@@ -3,9 +3,9 @@ name: CI
 on:
 
   push:
-    branches: [ "origin/main" ]
+    branches: [ "A11" ]
   pull_request:
-    branches: [ "origin/main" ]
+    branches: [ "A11" ]
 
   workflow_dispatch:
 env: 
