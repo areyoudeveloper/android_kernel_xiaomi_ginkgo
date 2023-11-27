@@ -10,6 +10,6 @@ cp -rf $image $ak_dir/
 cp -rf $dtbimg $ak_dir/
 cd $ak_dir
 
-zip -r9 QuartzCrystal-4.14_${model}_${fmt}.zip *
+zip -r9 QuartzCrystal-4.14-A11_${model}_${fmt}.zip *
 mv *.zip ../../
 cd ../../
